@@ -1,0 +1,41 @@
+const DosingLog = require('../models/DosingLog');
+
+// Start Dosing
+exports.startDosing = async (req, res) => {
+
+    try {
+
+        const dosing = new DosingLog(req.body);
+
+        await dosing.save();
+
+        res.status(201).json({
+            message: 'Dosing started successfully'
+        });
+
+    } catch (error) {
+
+        res.status(500).json({
+            error: error.message
+        });
+
+    }
+};
+
+// Get Dosing Logs
+exports.getDosingLogs = async (req, res) => {
+
+    try {
+
+        const logs = await DosingLog.find().sort({ createdAt: -1 });
+
+        res.json(logs);
+
+    } catch (error) {
+
+        res.status(500).json({
+            error: error.message
+        });
+
+    }
+};
