@@ -1,0 +1,14 @@
+const mongoose = require('mongoose');
+
+const DosingLogSchema = new mongoose.Schema({
+    dosingType: String,
+    status: String,
+    mode: String,
+
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
+});
+
+module.exports = mongoose.model('DosingLog', DosingLogSchema);
