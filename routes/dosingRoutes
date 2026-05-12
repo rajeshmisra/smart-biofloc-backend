@@ -1,0 +1,14 @@
+const express = require('express');
+
+const router = express.Router();
+
+const {
+    startDosing,
+    getDosingLogs
+} = require('../controllers/dosingController');
+
+router.post('/start', startDosing);
+
+router.get('/logs', getDosingLogs);
+
+module.exports = router;
