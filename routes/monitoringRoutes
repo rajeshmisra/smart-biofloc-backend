@@ -1,0 +1,14 @@
+const express = require('express');
+
+const router = express.Router();
+
+const {
+    uploadSensorData,
+    getLatestSensorData
+} = require('../controllers/monitoringController');
+
+router.post('/upload', uploadSensorData);
+
+router.get('/latest', getLatestSensorData);
+
+module.exports = router;
