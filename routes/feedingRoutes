@@ -1,0 +1,14 @@
+const express = require('express');
+
+const router = express.Router();
+
+const {
+    addFishProfile,
+    getFeedingConfig
+} = require('../controllers/feedingController');
+
+router.post('/add-profile', addFishProfile);
+
+router.get('/config', getFeedingConfig);
+
+module.exports = router;
