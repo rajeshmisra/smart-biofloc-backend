@@ -1,0 +1,20 @@
+const mongoose = require('mongoose');
+
+const SensorDataSchema = new mongoose.Schema({
+    temperature: Number,
+    ph: Number,
+    turbidity: Number,
+    tds: Number,
+
+    heaterStatus: String,
+    pumpStatus: String,
+    aeratorStatus: String,
+    drainValveStatus: String,
+
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
+});
+
+module.exports = mongoose.model('SensorData', SensorDataSchema);
