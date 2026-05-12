@@ -14,6 +14,15 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
+// Routes
+const monitoringRoutes = require('./routes/monitoringRoutes');
+const feedingRoutes = require('./routes/feedingRoutes');
+const dosingRoutes = require('./routes/dosingRoutes');
+
+app.use('/api/monitoring', monitoringRoutes);
+app.use('/api/feeding', feedingRoutes);
+app.use('/api/dosing', dosingRoutes);
+
 // Test Route
 app.get('/', (req, res) => {
     res.send('Smart Biofloc Backend Running');
