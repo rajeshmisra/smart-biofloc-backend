@@ -1,1 +1,42 @@
+const SensorData = require('../models/SensorData');
+
+// Upload Sensor Data
+exports.uploadSensorData = async (req, res) => {
+
+    try {
+
+        const newData = new SensorData(req.body);
+
+        await newData.save();
+
+        res.status(201).json({
+            message: 'Sensor data uploaded successfully'
+        });
+
+    } catch (error) {
+
+        res.status(500).json({
+            error: error.message
+        });
+
+    }
+};
+
+// Get Latest Sensor Data
+exports.getLatestSensorData = async (req, res) => {
+
+    try {
+
+        const latestData = await SensorData.findOne().sort({ createdAt: -1 });
+
+        res.json(latestData);
+
+    } catch (error) {
+
+        res.status(500).json({
+            error: error.message
+        });
+
+    }
+};
 
