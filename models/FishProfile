@@ -1,0 +1,18 @@
+const mongoose = require('mongoose');
+
+const FishProfileSchema = new mongoose.Schema({
+    fishName: String,
+    feedsPerDay: Number,
+    nextFeedTime: String,
+    mode: {
+        type: String,
+        default: 'AUTO'
+    },
+
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
+});
+
+module.exports = mongoose.model('FishProfile', FishProfileSchema);
